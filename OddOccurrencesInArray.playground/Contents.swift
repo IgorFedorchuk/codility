@@ -31,3 +31,23 @@ import UIKit
  each element of array A is an integer within the range [1..1,000,000,000];
  all but one of the values in A occur an even number of times.
  */
+
+public func solution(_ A : inout [Int]) -> Int {
+    var result = Set<Int>()
+    for element in A {
+        if result.contains(element){
+            result.remove(element)
+        }else{
+            result.insert(element)
+        }
+
+    }
+    if let first = result.first {
+        return first
+    }
+    return 0
+}
+
+var array = [9,3,9,3,9,7,9]
+
+print(solution(&array))

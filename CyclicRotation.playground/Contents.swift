@@ -40,3 +40,33 @@ import UIKit
 
 
  */
+
+var A = [3, 8, 9, 7, 6]
+
+public func solution(_ A : inout [Int], _ K : Int) -> [Int] {
+    var rotationCount = K
+    var result = A
+    while rotationCount > 0{
+        result = rotate(result)
+        rotationCount -= 1
+    }
+    return result
+}
+
+public func rotate(_ A : [Int]) -> [Int] {
+    if A.count <= 1 {
+        return A
+    }
+
+    if A.count == 2 {
+        return [A[1], A[0]]
+    }
+
+    var result = A
+    let first = result.removeFirst()
+    let last = result.removeLast()
+
+    return [last] + [first] + result
+}
+
+print(solution(&A, 3))

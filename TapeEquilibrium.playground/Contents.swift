@@ -43,3 +43,33 @@ import UIKit
  each element of array A is an integer within the range [−1,000..1,000].
 
  */
+
+public func solution(_ A : inout [Int]) -> Int {
+    var sum = A.reduce(0, +)
+    var result = 0
+    if A.count < 2{
+        return result
+    }
+
+    var leftPart = 0
+    for (index, item) in A.enumerated() {
+        if index == A.count - 1{
+            break
+        }
+
+        sum -= item
+        leftPart += item
+        if index == 0{
+            result = abs(leftPart - sum)
+        }else{
+            let newValue = abs(leftPart - sum)
+            result = min(result, newValue)
+        }
+    }
+
+    return result
+}
+
+var A = [3, 1, 2, 4, 3]
+
+print(solution(&A))

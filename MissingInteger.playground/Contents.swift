@@ -23,11 +23,11 @@ import UIKit
  */
 public func solution(_ A : inout [Int]) -> Int {
     var array = Array<Int>(repeating: 0, count: A.count)
-    var sum = 0
+    var itemOccurTimes = 0
     A.forEach{ item in
         if item > 0 && item <= array.count {
             array[item - 1] = 1
-            sum += 1
+            itemOccurTimes += 1
         }
     }
 
@@ -37,7 +37,7 @@ public func solution(_ A : inout [Int]) -> Int {
         }
     }
 
-    if A.count == sum{
+    if A.count == itemOccurTimes{
         return A.count + 1
     }
     return 1
